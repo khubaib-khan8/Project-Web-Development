@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    text-align: center;
+    background-color: midnightblue;
+}
+
+#home-score {
+    background: #0a0001;
+    font-size: 90px;
+    color: #F94F6D;
+    width: 120px;
+    margin: 20px;
+}
+#guest-score {
+    background: #0a0001;
+    font-size: 90px;
+    color: #F94F6D;
+    width: 120px;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background: none;
+}
+.ali{
+    font-weight: bolder;
+    font-size: xx-large;
+    color: white;
+}
+#home-score-btn-1{
+    background-color: white;
+}
+
+#guest-score-btn-1{
+    background-color: white;
+}

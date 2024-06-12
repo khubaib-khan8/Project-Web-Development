@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html ng-app="calculatorApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: darkcyan;
+        }
+        .calculator {
+            display: inline-block;
+            width: 400px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-weight: bolder;
+            background-color: grey;
+        }
+        .calculator input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: right;
+            border-radius: 2px;
+        }
+        .calculator button {
+            width: 23%;
+            padding: 10px;
+            margin: 1%;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+        .calculator .operator {
+            background-color: burlywood;
+            color: white;
+        }
+        .calculator .equals {
+            background-color: burlywood;
+            color: white;
+        }
+    </style>
+</head>
+<body ng-controller="CalculatorController">
+    <div class="calculator">
+        <input type="text" ng-model="display" readonly/>
+        <br/>
+        <button ng-click="append('7')">7</button>
+        <button ng-click="append('8')">8</button>
+        <button ng-click="append('9')">9</button>
+        
+        <br/>
+        <button ng-click="append('4')">4</button>
+        <button ng-click="append('5')">5</button>
+        <button ng-click="append('6')">6</button>
+        
+        <br/>
+        <button ng-click="append('1')">1</button>
+        <button ng-click="append('2')">2</button>
+        <button ng-click="append('3')">3</button>
+        
+        <br/>
+        <button ng-click="append('0')">0</button>
+        
+        <br/>
+        <button class="operator" ng-click="setOperator('+')">+</button>
+        <button class="operator" ng-click="setOperator('-')">-</button>
+        <button class="operator" ng-click="setOperator('*')">*</button>
+        <button class="operator" ng-click="setOperator('/')">/</button>
+        <button ng-click="clear()">C</button>
+        <button class="equals" ng-click="calculate()">=</button>
+    </div>
+    <script>
+        var app = angular.module('calculatorApp', []);
+
+        app.controller('CalculatorController', function($scope) {
+            $scope.display = '';
+            $scope.firstOperand = null;
+            $scope.secondOperand = null;
+            $scope.operator = null;
+            $scope.result = null;
+            $scope.isOperatorSet = false;
+
+            $scope.append = function(value) {
+                if ($scope.isOperatorSet) {
+                    $scope.display = value;
+                    $scope.isOperatorSet = false;
+                } else {
+                    $scope.display += value;
+                }
+            };
+
+            $scope.clear = function() {
+                $scope.display = '';
+                $scope.firstOperand = null;
+                $scope.secondOperand = null;
+                $scope.operator = null;
+                $scope.result = null;
+                $scope.isOperatorSet = false;
+            };
+
+            $scope.setOperator = function(op) {
+                if ($scope.display === '') return;
+                if ($scope.firstOperand !== null) {
+                    $scope.calculate();
+                }
+                $scope.firstOperand = parseFloat($scope.display);
+                $scope.operator = op;
+                $scope.isOperatorSet = true;
+            };
+
+            $scope.calculate = function() {
+                if ($scope.display === '' || $scope.firstOperand === null) return;
+                $scope.secondOperand = parseFloat($scope.display);
+                switch ($scope.operator) {
+                    case '+':
+                        $scope.result = $scope.firstOperand + $scope.secondOperand;
+                        break;
+                    case '-':
+                        $scope.result = $scope.firstOperand - $scope.secondOperand;
+                        break;
+                    case '*':
+                        $scope.result = $scope.firstOperand * $scope.secondOperand;
+                        break;
+                    case '/':
+                        $scope.result = $scope.firstOperand / $scope.secondOperand;
+                        break;
+                    default:
+                        return;
+                }
+                $scope.display = $scope.result.toString();
+                $scope.firstOperand = null;
+                $scope.secondOperand = null;
+                $scope.operator = null;
+                $scope.result = null;
+            };
+        });
+    </script>
+</body>
+</html>

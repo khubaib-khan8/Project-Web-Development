@@ -1,0 +1,36 @@
+body{
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+img {
+    width: 500px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 200px;
+}
+p {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: xx-large;
+}
+button {
+    background: white;
+    color: black;
+    margin-top: 10px;
+    border: 1px solid black;
+    padding: 10px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: xx-large;
+}
+
+#error {
+    color: red;
+    font-weight: 200;
+}

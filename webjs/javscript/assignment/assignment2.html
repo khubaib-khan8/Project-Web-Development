@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="currencyConverterApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Currency Converter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: salmon;
+        }
+        .converter {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: darkcyan;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .converter select, .converter input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .converter button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: coral;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #kk{
+            width:auto;
+        }
+    </style>
+</head>
+<body ng-controller="CurrencyConverterController">
+    <div class="converter">
+        <h2>Currency Converter</h2>
+        <input type="number" id="kk" ng-model="amount" placeholder="Enter amount"/>
+        <select ng-model="fromCurrency" ng-options="currency for currency in currencies"></select>
+        <select ng-model="toCurrency" ng-options="currency for currency in currencies"></select>
+        <button ng-click="convert()">Convert</button>
+        <h3 ng-if="convertedAmount !== null">{{amount}} {{fromCurrency}} = {{convertedAmount}} {{toCurrency}}</h3>
+    </div>
+    <script>
+        var app = angular.module('currencyConverterApp', []);
+
+        app.controller('CurrencyConverterController', function($scope) {
+            $scope.currencies = ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY', 'SEK', 'NZD', 'PKR'];
+            $scope.amount = null;
+            $scope.fromCurrency = 'USD';
+            $scope.toCurrency = 'PKR';
+            $scope.convertedAmount = null;
+
+            $scope.exchangeRates = {
+                'USD': 1,
+                'EUR': 0.85,
+                'GBP': 0.75,
+                'JPY': 110,
+                'AUD': 1.35,
+                'CAD': 1.25,
+                'CHF': 0.92,
+                'CNY': 6.45,
+                'SEK': 8.7,
+                'NZD': 1.4,
+                'PKR': 285
+            };
+
+            $scope.convert = function() {
+                if ($scope.amount !== null && $scope.fromCurrency && $scope.toCurrency) {
+                    var amountInUSD = $scope.amount / $scope.exchangeRates[$scope.fromCurrency];
+                    $scope.convertedAmount = amountInUSD * $scope.exchangeRates[$scope.toCurrency];
+                }
+            };
+        });
+    </script>
+</body>
+</html>

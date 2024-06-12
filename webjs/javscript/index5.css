@@ -1,0 +1,33 @@
+.container{
+    width: 500px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    background-color: teal;
+    text-align: center;
+    padding-top: 80px;
+}
+body{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+}
+#qa{
+    color: white;
+}
+#kk{
+    color: peru
+}
+#ali{
+    background-color: peru;
+    color: white;
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#nn{
+    color: white;
+}

@@ -1,0 +1,50 @@
+{
+    "home": {
+        "name": "khabab khan",
+        "intro": "Hi I'm khabab khan, a passionate Android developer with a knack for crafting intuitive and impactful mobile applications. Let's build something amazing together!"
+    },
+    "about": {
+        "description": "My journey in app development has been fueled by a desire to solve real-world problems and create meaningful connections through technology. I'm dedicated to continuous learning and staying updated with the latest trends in the ever-evolving world of mobile development.",
+        "education": [
+            "Faculty of Science (Pre-Engineering) - Punjab College",
+            "Bachelor's Degree in Software Engineering - Capital University of Science and Technology"
+        ],
+        "technical_skills": [
+            "Java",
+            "Kotlin",
+            "Android Studio",
+            "XML"
+        ],
+        "soft_skills": [
+            "Communication",
+            "Problem Solving",
+            "Teamwork",
+            "Time Management"
+        ],
+        "experience": [
+            "6-Months Internship at Zegron-Islamabad",
+            "2-Years of Freelancing Experience"
+        ]
+    },
+    "projects": [
+        {
+            "name": "Project 1",
+            "description": "This is the first project description.",
+            "link": "https://example.com/project1"
+        },
+        {
+            "name": "Project 2",
+            "description": "This is the second project description.",
+            "link": "https://example.com/project2"
+        },
+        {
+            "name": "Project 3",
+            "description": "This is the third project description.",
+            "link": "https://example.com/project3"
+        }
+    ],
+    "contact": {
+        "email": "your-email@example.com",
+        "phone": "+1234567890"
+    }
+}
